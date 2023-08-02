@@ -14,7 +14,8 @@ import com.opensymphony.module.sitemesh.util.ClassLoaderUtil;
 import com.opensymphony.module.sitemesh.util.Container;
 
 import javax.naming.InitialContext;
-import javax.rmi.PortableRemoteObject;
+import java.rmi.Remote;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
@@ -85,17 +86,17 @@ public abstract class Factory implements PageParserSelector {
     /** Find String environment entry, or return default if not found. */
     private static String getEnvEntry(String envEntry, String defaultValue) {
         String result = null;
-        try {
-            if (Container.get() != Container.JRUN) {
-                // TODO: JRun really isn't happy with this
-                InitialContext ctx = new InitialContext();
-                Object o = ctx.lookup("java:comp/env/" + envEntry);
-                ctx.close();
-                result = (String)PortableRemoteObject.narrow(o, String.class); // rmi-iiop friendly.
-            }
-        }
-        catch (Exception e) { } // failed - don't moan, just return default.
-        catch (NoClassDefFoundError e) { } // to deal with restricted class loaders (i.e. on AppEngine).
+//        try {
+//            if (Container.get() != Container.JRUN) {
+//                // TODO: JRun really isn't happy with this
+//                InitialContext ctx = new InitialContext();
+//                Object o = ctx.lookup("java:comp/env/" + envEntry);
+//                ctx.close();
+//                result = (String)PortableRemoteObject.narrow(o, String.class); // rmi-iiop friendly.
+//            }
+//        }
+//        catch (Exception e) { } // failed - don't moan, just return default.
+//        catch (NoClassDefFoundError e) { } // to deal with restricted class loaders (i.e. on AppEngine).
         return result == null || result.trim().length() == 0 ? defaultValue : result;
     }
 }

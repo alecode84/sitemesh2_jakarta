@@ -3,7 +3,9 @@
  * distribution in the LICENSE.txt file. */
 package com.opensymphony.module.sitemesh.filter;
 
-import javax.servlet.ServletOutputStream;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.WriteListener;
+
 import java.io.IOException;
 
 /**
@@ -120,5 +122,12 @@ public class RoutableServletOutputStream extends ServletOutputStream {
 
     public void flush() throws IOException {
         getDestination().flush();
+    }
+
+    public void setWriteListener(WriteListener var1){
+
+    }
+    public boolean isReady(){
+        return true;
     }
 }

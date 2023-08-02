@@ -21,7 +21,7 @@ import java.io.IOException;
  * @author Joe Walnes
  * @see TagTokenizer
  */
-public class Parser extends Lexer {
+public class Parser extends com.opensymphony.module.sitemesh.html.tokenizer.Lexer {
 
     private final CharArray attributeBuffer = new CharArray(64);
     private final ReusableToken reusableToken = new ReusableToken();

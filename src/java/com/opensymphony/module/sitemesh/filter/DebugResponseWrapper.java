@@ -3,10 +3,10 @@
  * distribution in the LICENSE.txt file. */
 package com.opensymphony.module.sitemesh.filter;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpServletResponseWrapper;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponseWrapper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Locale;
@@ -53,7 +53,7 @@ public class DebugResponseWrapper extends HttpServletResponseWrapper {
     }
 
     public String encodeRedirectUrl(String url) {
-        return super.encodeRedirectUrl(url);
+        return super.encodeRedirectURL(url);
     }
 
     public String encodeRedirectURL(String url) {
@@ -97,7 +97,7 @@ public class DebugResponseWrapper extends HttpServletResponseWrapper {
 
     public void setStatus(int sc, String msg) {
         if (enabled()) debug("setStatus", String.valueOf(sc), msg);
-        super.setStatus(sc, msg);
+        super.setStatus(sc);
     }
 
     public void flushBuffer() throws IOException {
